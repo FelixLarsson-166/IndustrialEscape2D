@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     [SerializeField] float health = 3;
     [SerializeField] TextMeshProUGUI printer;
     [SerializeField] GameObject gameOverMeny;
+    [SerializeField] GameObject blood;
 
     private void Start()
     {
@@ -35,7 +36,11 @@ public class Health : MonoBehaviour
 
     public void Death()
     {
-        Destroy(gameObject);
+        if (blood)
+        {
+            blood.SetActive(true);
+        }
+        Destroy(gameObject, 1);
         if (gameOverMeny)
         {
             gameOverMeny.SetActive(true);
