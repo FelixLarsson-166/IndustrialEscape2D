@@ -6,6 +6,7 @@ public class Damage : MonoBehaviour
 {
     [SerializeField] float damage = -1;
     [SerializeField] string damageTag = "Player";
+    [SerializeField] bool healthPack = false;
     
     void Start()
     {
@@ -22,6 +23,10 @@ public class Damage : MonoBehaviour
         if(collision.gameObject.CompareTag(damageTag))
         {
             collision.gameObject.GetComponent<Health>().AddHealth(damage);
+            if (healthPack == true)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
